@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1078</width>
+    <height>692</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Borys Pawluczuk - projekt z przedmiotu Zaawansowane C++</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>131</y>
+      <width>811</width>
+      <height>521</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>21</y>
+      <width>811</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Edycja wpisów</string>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>791</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxAction">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>20</y>
+      <width>241</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Akcje</string>
+    </property>
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Wyczyść</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonFind">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Szukaj</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAdd">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>31</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Dodaj</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonDelete">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>90</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Usuń</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonUpdate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>60</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Zapisz</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxConnect">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>440</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Połączenie</string>
+    </property>
+    <widget class="QPushButton" name="connectButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Połącz</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBoxDbList">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>211</width>
+       <height>32</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>270</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Usuń kolumnę</string>
+    </property>
+    <widget class="QComboBox" name="comboBoxColumnList">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>221</width>
+       <height>32</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonDeleteColumn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Usuń </string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>160</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Dodaj kolumnę</string>
+    </property>
+    <widget class="QLineEdit" name="lineEditInsertColumn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>211</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAddColumn">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>114</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Dodaj</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButtonSetCurrentFolder">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>400</y>
+      <width>221</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Wybierz folder bazy danych</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>550</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Nowa baza danych</string>
+    </property>
+    <widget class="QLineEdit" name="lineEditCreateDb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>191</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonCreateDb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>151</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Utwórz nową baze</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
