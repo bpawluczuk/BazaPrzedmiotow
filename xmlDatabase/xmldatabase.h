@@ -14,6 +14,8 @@ using namespace tinyxml2;
 
 /**
  * class XmlDatabase
+ * This class represents database,
+ * This class defines methods who are needed for manage of database, creates and fill simple ORM objects
  */
 class XmlDatabase {
 public:

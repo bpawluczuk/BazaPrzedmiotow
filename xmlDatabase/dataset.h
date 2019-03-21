@@ -11,6 +11,8 @@
 
 /**
  * class DataSet
+ * This class represents data set of database,
+ * This class defines data source who is needed for cooperation with table view model from QT library
  */
 class DataSet {
 public:

@@ -7,6 +7,14 @@
 
 using namespace std;
 
+/**
+ * class Column
+ * This class represents cell in record of database,
+ * This class defines object who contain following properies:
+ * name column,
+ * value column,
+ * number column
+ */
 class Column : IColumn<const char *, const char *>{
 public:
 
