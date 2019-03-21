@@ -51,13 +51,12 @@ public:
     string getRecordId(int indexRow);
 
     vector<string> columnNames;
+
     vector<vector<string>> rows;
 
 private:
 
     list<Record *> records;
-//    vector<string> columnNames;
-//    vector<vector<string>> rows;
     int columnCount;
     int rowsCount;
 };

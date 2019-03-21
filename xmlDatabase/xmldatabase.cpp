@@ -51,8 +51,9 @@ int XmlDatabase::create(const char *name) {
     XMLNode *pRoot = XmlDatabase::xmlDocument.NewElement("Database");
     XmlDatabase::xmlDocument.InsertFirstChild(pRoot);
 
-    XMLNode *pShema = XmlDatabase::xmlDocument.NewElement("Schema");
+    XMLElement *pShema = XmlDatabase::xmlDocument.NewElement("Schema");
     pRoot->InsertFirstChild(pShema);
+    pShema->SetAttribute("autoincrement", "0");
 
     XMLNode *pId = XmlDatabase::xmlDocument.NewElement("ID");
     pShema->InsertFirstChild(pId);
@@ -72,7 +73,7 @@ vector<string> XmlDatabase::getDatabaseList(const char *path){
         return fileList;
     }
 
-    while ((entry = readdir(dir)) != NULL) {
+    while ((entry = readdir(dir)) != nullptr) {
         printf("%s\n",entry->d_name);
         fileList.push_back(string(entry->d_name));
     }
@@ -89,10 +90,26 @@ void XmlDatabase::saveFile() {
     }
 }
 
+int XmlDatabase::getIndexCount(){
+
+    XMLNode *pRoot = XmlDatabase::xmlGetRootNode();
+
+    XMLElement *node = pRoot->FirstChildElement("Schema");
+    const char *increment = node->Attribute("autoincrement");
+
+    int inc = atoi(increment);
+    inc++;
+
+    node->SetAttribute("autoincrement",  inc);
+    XmlDatabase::saveFile();
+
+    return inc;
+}
+
 int XmlDatabase::insert(Record *record) {
 
     XMLNode *pRoot = XmlDatabase::xmlGetRootNode();
-    int count = XmlDatabase::columnCount() + 1;
+    int count = XmlDatabase::getIndexCount();
 
     XMLElement *pNode = XmlDatabase::xmlDocument.NewElement("Record");
     pNode->SetAttribute("type", "record");
@@ -121,14 +138,6 @@ int XmlDatabase::insert(Record *record) {
 }
 
 int XmlDatabase::columnCount() {
-
-//    XMLNode *pRoot = XmlDatabase::xmlGetRootNode();
-
-//    int inc = 0;
-//    for (XMLElement *child = pRoot->FirstChildElement("Record"); child != 0; child = child->NextSiblingElement()) {
-//        inc += 1;
-//    }
-
     return XmlDatabase::getSchema().size();
 }
 
@@ -290,9 +299,11 @@ list<Record *> XmlDatabase::select(Record *where) {
     list<Record *> result;
     bool addRecord = false;
     bool isEmptyWhere = true;
+    bool isDiferenceWhere = true;
     string word;
     string columnValue;
     const char *columnKey;
+    vector<bool> compareWhere;
 
     for (auto column: where->getColumns()) {
         if(!string(column->getValue()).empty() && strcmp(column->getKey(), "ID") != 0){
@@ -310,13 +321,23 @@ list<Record *> XmlDatabase::select(Record *where) {
             if (strcmp(columnKey, "ID") == 0) {
                 continue;
             }
-            auto resultCompare = columnValue.find(word);
-            if (resultCompare != string::npos && !word.empty()) {
+
+            if (columnValue.find(word) != string::npos && !word.empty()) {
                 addRecord = true;
             }
         }
 
-        if (addRecord || isEmptyWhere) {
+        isDiferenceWhere = false;
+            for (auto column: record->getColumns()) {
+                columnKey = column->getKey();
+                columnValue = string(column->getValue());
+                word = string(where->getColumnValue(columnKey));
+                if(columnValue.find(word) == string::npos && !word.empty() && strcmp(column->getKey(), "ID") != 0){
+                    isDiferenceWhere = true;
+                }
+            }
+
+        if ((addRecord  && !isDiferenceWhere) || isEmptyWhere){
             result.push_back(record);
         }
     }

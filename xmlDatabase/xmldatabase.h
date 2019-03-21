@@ -109,6 +109,12 @@ public:
      */
     DataSet getDataSet();
 
+    /**
+     * @brief getIndexCount
+     * @return
+     */
+    int getIndexCount();
+
 private:
 
     const char *dbName;

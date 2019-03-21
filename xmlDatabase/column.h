@@ -3,10 +3,11 @@
 
 
 #include <iostream>
+#include "icolumn.h"
 
 using namespace std;
 
-class Column {
+class Column : IColumn<const char *, const char *>{
 public:
 
     /**
