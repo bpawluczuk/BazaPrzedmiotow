@@ -1,19 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTableView>
-#include <QComboBox>
-#include <QFileDialog>
-#include <QDirIterator>
-#include <iostream>
-#include <vector>
-
-#include "dirent.h"
-
-#include "xmlmodel.h"
-#include "tinyxml2.h"
-#include "xmldatabase.h"
-#include "dataset.h"
-#include <unistd.h>
 
 using namespace std;
 using namespace tinyxml2;
@@ -68,10 +54,6 @@ void MainWindow::refresh(){
         ui->comboBoxColumnList->addItem(MainWindow::ConstCharToQString(item));
     }
 
-    //    for(auto item: MainWindow::editRecord){
-    //        delete item.second;
-    //    }
-
     XmlModel* xmlModel = new XmlModel();
 
     MainWindow::dataSet = new DataSet();
@@ -84,6 +66,7 @@ void MainWindow::refresh(){
     xmlModel->setDataset(MainWindow::dataSet);
 
     ui->tableView->setModel(xmlModel);
+    ui->tableView->setColumnHidden(0, true);
 
     for(auto item: MainWindow::editRecord){
         delete item.second;
@@ -106,6 +89,8 @@ void MainWindow::refresh(){
             ui->horizontalLayout->addWidget(item.second);
         }
     }
+
+    MainWindow::where = nullptr;
 }
 
 Record* MainWindow::createRecord(){
@@ -185,6 +170,8 @@ void MainWindow::on_pushButtonAddColumn_clicked()
     if(ui->lineEditInsertColumn->text().toStdString()!=""){
         const char *name = MainWindow::QStringToConstChar(ui->lineEditInsertColumn->text());
         MainWindow::db->insertColumn(name);
+        MainWindow::where = nullptr;
+        ui->lineEditInsertColumn->setText("");
         MainWindow::refresh();
     }
 }
@@ -232,6 +219,7 @@ void MainWindow::on_pushButtonSetCurrentFolder_clicked()
 void MainWindow::on_pushButtonDeleteColumn_clicked()
 {
     MainWindow::db->removeColumn(MainWindow::QStringToConstChar(ui->comboBoxColumnList->currentText()));
+    MainWindow::where = nullptr;
     MainWindow::refresh();
 }
 
@@ -255,6 +243,7 @@ void MainWindow::on_pushButtonCreateDb_clicked()
     MainWindow::db->insertColumn("Desc");
     MainWindow::db->insertColumn("Status");
 
+    ui->lineEditCreateDb->setText("");
     MainWindow::refresh();
 }
 

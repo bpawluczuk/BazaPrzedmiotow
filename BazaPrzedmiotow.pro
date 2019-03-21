@@ -28,20 +28,22 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     xmlmodel.cpp \
-    tinyxml2.cpp \
-    column.cpp \
-    record.cpp \
-    xmldatabase.cpp \
-    dataset.cpp
+    xmlDatabase/column.cpp \
+    xmlDatabase/dataset.cpp \
+    xmlDatabase/record.cpp \
+    xmlDatabase/tinyxml2.cpp \
+    xmlDatabase/xmldatabase.cpp
 
 HEADERS += \
         mainwindow.h \
     xmlmodel.h \
-    tinyxml2.h \
-    column.h \
-    record.h \
-    xmldatabase.h \
-    dataset.h
+    xmlDatabase/column.h \
+    xmlDatabase/dataset.h \
+    xmlDatabase/icolumn.h \
+    xmlDatabase/irecord.h \
+    xmlDatabase/record.h \
+    xmlDatabase/tinyxml2.h \
+    xmlDatabase/xmldatabase.h
 
 FORMS += \
         mainwindow.ui

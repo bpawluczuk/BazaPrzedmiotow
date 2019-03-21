@@ -3,10 +3,19 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QTableView>
+#include <QComboBox>
+#include <QFileDialog>
+#include <QDirIterator>
+#include <iostream>
 #include <vector>
-#include "tinyxml2.h"
-#include "xmldatabase.h"
-#include "dataset.h"
+#include "dirent.h"
+
+#include "xmlDatabase/tinyxml2.h"
+#include "xmlDatabase/xmldatabase.h"
+#include "xmlDatabase/dataset.h"
+
+#include "xmlmodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -51,7 +60,6 @@ private:
     void connectDb(QString dbName);
     Record* createRecord();
     Record* where = nullptr;
-
     Ui::MainWindow *ui;
     XmlDatabase *db;
     QString dbDir;

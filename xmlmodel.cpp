@@ -44,7 +44,7 @@ QVariant XmlModel::headerData(int section, Qt::Orientation orientation, int role
             return QString::fromStdString(name);
         }
         if (orientation == Qt::Vertical) {
-            return QString("");
+            return QString("%1").arg(section+1);
         }
     }
     return QVariant();

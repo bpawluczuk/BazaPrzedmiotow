@@ -4,7 +4,7 @@
 #endif // XMLMODEL_H
 
 #include <QAbstractTableModel>
-#include "dataset.h"
+#include "xmlDatabase/dataset.h"
 
 class XmlModel : public QAbstractTableModel
 {
